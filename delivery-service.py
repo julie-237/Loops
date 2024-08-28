@@ -7,7 +7,7 @@ print("Hello! Here are the available pizza:")
 for i, pizza in enumerate(list_of_available_pizza):
     i += 1
     print(str(i) + ". " + pizza)
-choice = input("Do you want to add a pizza to your order? ")
+choice = "yes"
 while choice == "yes":
     pizza_number = int(input("what do you want to order? (select a number)"))
     if pizza_number <= len(list_of_available_pizza) and pizza_number > 0:
