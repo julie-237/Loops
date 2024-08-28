@@ -17,19 +17,26 @@ while choice == "yes":
     else:
         print("sorry pizza " + str(pizza_number) + " does not exist")
     choice = input("Do you want to add a pizza to your order? ")
+    if choice != "yes" and choice != "no":
+        print("invalid response ")
+    #choice = input("Do you want to add a pizza to your order? ")
+
+
           
 print("you have ordered " + str(order) + " pizza") 
 print("your order: " + str(order_list))
 Total_price = unit_price * len(order_list) 
 print("price " + str(Total_price)) 
-Tip_value = "invalid"
-while Tip_value == "invalid":
-    Tip = int(input("Do you want to add some tip? (0-25%)"))
-    Tip_amount = (Tip/100)*Total_price
-    Amount_to_pay = Tip_amount + Total_price
-    if Tip <= 25 and Tip > 0 :
-        print("Thanks, you have to pay " + str(Amount_to_pay))
+if Total_price >= 10:
+    Tip_value = "invalid"
+    while Tip_value == "invalid":
+        Tip = int(input("Do you want to add some tip? (0-25%)"))
+        Tip_amount = (Tip/100)*Total_price
+        Amount_to_pay = Tip_amount + Total_price
+        if Tip <= 25 and Tip > 0 :
+            print("Thanks, you have to pay " + str(Amount_to_pay))
+        print("The pizza are on the way...")
+
     else:
         print("invalid tip")
         Tip_value = "invalid"
-print("The pizza are on the way...")
