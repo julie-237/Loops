@@ -1,4 +1,10 @@
-list_of_available_pizza = ["peperoni", "magerita", "bolognaise", "fromage", "champignon"]
+list_of_available_pizza = [
+    "peperoni",
+    "magerita",
+    "bolognaise",
+    "fromage",
+    "champignon",
+]
 order_list = []
 order = 0
 unit_price = 10
@@ -13,30 +19,38 @@ while choice == "yes":
     if pizza_number <= len(list_of_available_pizza) and pizza_number > 0:
         order_list.append(list_of_available_pizza[pizza_number - 1])
         order = order + 1
-        print("Adding " + str(list_of_available_pizza[pizza_number-1]) + " to your order")
+        print(
+            "Adding "
+            + str(list_of_available_pizza[pizza_number - 1])
+            + " to your order"
+        )
     else:
         print("sorry pizza " + str(pizza_number) + " does not exist")
-    choice = input("Do you want to add a pizza to your order? ")
-    if choice != "yes" and choice != "no":
+
+    message = "Do you want to add a pizza to your order? "
+    choice = input(message)
+    while choice != "yes" and choice != "no":
         print("invalid response ")
-    #choice = input("Do you want to add a pizza to your order? ")
+        choice = input(message)
 
 
-          
-print("you have ordered " + str(order) + " pizza") 
+print("you have ordered " + str(order) + " pizza")
 print("your order: " + str(order_list))
-Total_price = unit_price * len(order_list) 
-print("price " + str(Total_price)) 
-if Total_price >= 10:
-    Tip_value = "invalid"
-    while Tip_value == "invalid":
-        Tip = int(input("Do you want to add some tip? (0-25%)"))
-        Tip_amount = (Tip/100)*Total_price
-        Amount_to_pay = Tip_amount + Total_price
-        if Tip <= 25 and Tip > 0 :
-            print("Thanks, you have to pay " + str(Amount_to_pay))
-        print("The pizza are on the way...")
+total_price = unit_price * len(order_list)
+print("price " + str(total_price))
+if total_price >= 10:
+    is_tip_value_valid = False
+    while not is_tip_value_valid:
+        tip = int(input("Do you want to add some tip? (0-25%)"))
+        tip_amount = (tip / 100) * total_price
+        amount_to_pay = tip_amount + total_price
+        if tip <= 25 and tip > 0:
+            print("Thanks, you have to pay " + str(amount_to_pay))
+            print("The pizza are on the way...")
+            is_tip_value_valid = True
 
-    else:
-        print("invalid tip")
-        Tip_value = "invalid"
+        else:
+            print("invalid tip")
+
+else:
+    print("see you next time")
